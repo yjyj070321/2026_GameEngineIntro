@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Test22 : MonoBehaviour
 {
@@ -30,6 +31,19 @@ public class Test22 : MonoBehaviour
         moveInput = value.Get<Vector2>();
    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if (collision.name == "Death")
+        {
+           SceneManager. LoadScene(SceneManager.GetActiveScene().name); 
+        }
+        else
+        {
+            SceneManager.LoadScene("PlayScene_" + collision.name);
+        }
+    }
+    
+    
    void Update()
    {
         if(moveInput.x > 0)
