@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class PlayerControlloer : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -38,5 +39,17 @@ public class PlayerControlloer : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision. CompareTag("Respawn"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    
+        if (collision.CompareTag("Finish"))
+        {
+            collision. GetComponent<LevelObject>().MoveToNextLevel();
+        }
+    }
 }   
     
